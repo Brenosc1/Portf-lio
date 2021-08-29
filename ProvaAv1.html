@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var preco = parseFloat(prompt("Digite o Preço do produto: "));
+        var pais = prompt("Digite o País: (1 – Estados Unidos; 2 – México; e 3 – outros");
+        var transporte = prompt("Digite o meio de transorte: (T – terrestre; F – fluvial; e A – aéreo)");
+        var carga = prompt("Digite se a carga é perigosa: (S – sim; N – não)");
+        var imposto;
+        var valortransporte;
+        var seguro;
+        if (preco <= 100) {
+            imposto = preco * 0.05;
+        } else {
+            imposto = preco * 0.1;
+        }
+        document.write("O valor do imposto em reais é: " + imposto + "<br>");
+
+        if (pais == 1 && carga == "S") {
+            valortransporte = 50;
+        }
+        if (pais == 1 && carga == "N") {
+            valortransporte = 12;
+        }
+        if (pais == 2 && carga == "S") {
+            valortransporte = 21;
+        }
+        if (pais == 2 && carga == "N") {
+            valortransporte = 21;
+        }
+        if (pais == 3 && carga == "S") {
+            valortransporte = 24;
+        }
+        if (pais == 3 && carga == "N") {
+            valortransporte = 60;
+        }
+        document.write("O valor do transporte em reais é: " + valortransporte + "<br>");
+
+        if (pais != "2") {
+            seguro = imposto / 2;
+        }
+        if (transporte == "A") {
+            seguro = imposto / 2;
+        }
+        else {
+            seguro = valortransporte * 2;
+        }
+
+        document.write("O valor do seguro em reais é: " + seguro + "<br>");
+
+        document.write("O valor total em reais é: " + (preco + imposto + valortransporte + seguro));
+    </script>\
+</body>
+
+</html>

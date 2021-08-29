@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var valorE = parseInt(prompt("Digite o valor: "))
+        var n20 = parseInt(valorE / 20);
+        var r20 = valorE % 20;
+        var n10 = parseInt(r20 / 10);
+        var r10 = valorE % 10;
+        var n5 = parseInt(r10 / 5);
+        var r5 = valorE % 5;
+        var n2 = parseInt(r5 / 2);
+        var r2 = valorE % 2;
+        var n1 = parseInt(r2 / 1);
+
+        document.write("Cédulas de 20: " + n20 + "<br>");
+        document.write("Cédulas de 10: " + n10 + "<br>");
+        document.write("Cédulas de 5: " + n5 + "<br>");
+        document.write("Cédulas de 2: " + n2 + "<br>");
+        document.write("Cédulas de 1: " + n1);
+    </script>
+</body>
+
+</html>

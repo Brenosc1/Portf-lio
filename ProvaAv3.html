@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var n = parseInt(prompt("Digite a quantidade de tipos de produtos: ")); // Item A
+        var descricao = []; // Item A
+        var valorUni = []; // Item A
+        var quantidade = []; // Item A
+        var fragil = []; // Item A
+        var qCupom = 0; // Item B
+        var valorTotal = 0; // Item B
+        var FragilMaiorValor = -Infinity; // Item C
+        var DescrFragilMaiorValor; // Item C
+        var qNaoFrageis = 0; // Item D
+
+        for (var i = 0; i < n; i++) {
+            descricao[i] = prompt("Digite a descrição do seu item: "); // Item A
+            valorUni[i] = parseFloat(prompt("Digite o valor untário do produto: ")); // Item A
+            quantidade[i] = parseInt(prompt("Digite a quantidade do produto desejado: ")); // Item A
+            fragil[i] = prompt("Digite se o produto é frágil: S ou N"); // Item A
+            valorTotal = valorTotal + (valorUni[i] * quantidade[i]); // Item B
+
+            if (fragil == "S") { // Item C
+                if (FragilMaiorValor < valorUni[i]) { // Item C
+                    FragilMaiorValor = valorUni[i]; // Item C
+                    DescrFragilMaiorValor = descricao[i]; // Item C
+                }
+            }
+            if (fragil[i] == "N" && valorUni[i] < 15) { // Item D
+                qNaoFrageis = qNaoFrageis + 1; // Item D
+            }
+        }
+
+        qCupom = Math.trunc(valorTotal / 10);
+
+
+        document.write(descricao + "<br>" + valorUni + "<br>" + quantidade + "<br>" + fragil + "<br>"); // Item A
+        document.write("Você possui " + qCupom + " Cupons!" + "<br>"); // Item B
+        document.write(DescrFragilMaiorValor + "<br>"); // Item C
+        document.write(qNaoFrageis + "<br>"); // Item D
+
+    </script>
+</body>
+
+</html>

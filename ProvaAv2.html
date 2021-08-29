@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var n = parseInt(prompt("Digite o número de países: "));
+        var minDias = Infinity;
+        var MaxGastos = -Infinity;
+        var PaisMaxGastos;
+        var NumeroPaisesEuropaNavio = 0;
+        var SomaGastosEuropa = 0;
+        var MediaGastosEuropa = 0;
+        var cntgCarro = 0;
+        var cntgAviao = 0;
+        var cntgNavio = 0;
+        var TransMaisUsado;
+
+        for (var i = 1; i <= n; i++) {
+            var nome = prompt("Digite o nome do país: ");
+            var continente = prompt("Digite o continente: ");
+            var gastos = parseFloat(prompt("Digite seus gastos: "));
+            var dias = parseInt(prompt("Digite quantos dias você ficou no país: "));
+            var transporte = prompt("Digite o meio de trasporte usado: ");
+
+            if (dias < minDias) {
+                minDias = dias;
+            }
+            if (continente == "Ásia" && gastos > MaxGastos) {
+                PaisMaxGastos = nome;
+            }
+            if (continente == "Europa" && transporte == "N") {
+                SomaGastosEuropa = SomaGastosEuropa + gastos;
+                NumeroPaisesEuropaNavio = NumeroPaisesEuropaNavio + 1;
+                MediaGastosEuropa = SomaGastosEuropa / NumeroPaisesEuropaNavio;
+            }
+            if (transporte == "C") {
+                cntgCarro = cntgCarro + 1;
+            }
+            if (transporte == "A") {
+                cntgAviao = cntgAviao + 1;
+            }
+            if (transporte == "N") {
+                cntgNavio = cntgNavio + 1;
+            }
+            if (cntgCarro > cntgNavio && cntgCarro > cntgAviao) {
+                TransMaisUsado = "Carro";
+            }
+            if (cntgAviao > cntgCarro && cntgAviao > cntgNavio) {
+                TransMaisUsado = "Avião";
+            }
+            if (cntgNavio > cntgCarro && cntgNavio > cntgAviao) {
+                TransMaisUsado = "Navio";
+            }
+        }
+        document.write("A menor duração foi de " + minDias + " dias!" + "<br>");
+        document.write("O país asiático que teve a maior despesa foi o(a) " + PaisMaxGastos + "!" + "<br>");
+        document.write("A média de gastos na Europa com o transporte Navio foi de " + MediaGastosEuropa + " reais!" + "<br>");
+        document.write("O meio de transporte mais usado foi o " + TransMaisUsado + "!");
+
+    </script>
+</body>
+
+</html>

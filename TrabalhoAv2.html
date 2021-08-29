@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function operacao01(x, y) {
+
+            var SomaDosPrimos = 0;
+
+            while (x <= y) {
+                var cntg = 0;
+                for (var i = 1; i <= x; i++) {
+                    if (x % i == 0) {
+                        cntg++;
+                    }
+                }
+                if (cntg == 2 && x != 2) {
+                    SomaDosPrimos = SomaDosPrimos + x;
+                }
+                x++
+            }
+            while (y < x) {
+                var cntg = 0;
+                for (var i = 1; i <= y; i++) {
+                    if (y % i == 0) {
+                        cntg++;
+                    }
+                }
+                if (cntg == 2 && y != 2) {
+                    SomaDosPrimos = SomaDosPrimos + y;
+                }
+                y++
+            }
+            return SomaDosPrimos;
+        }
+        function operacao02(n) {
+
+            var nOriginal = n;
+
+            var inv = 0;
+
+            for (var i = 1; i <= nDedigitos; i++) {
+
+
+                var DigitoEsq = Math.trunc(n % 10);
+                inv = (inv * 10) + DigitoEsq;
+                n = n / 10;
+
+            }
+            if (nOriginal !== inv) {
+                alert(false);
+            } else {
+                alert(true);
+            }
+        }
+        function operacao03(b) {
+
+            var k = b;
+            if (k < 0) {
+                k = k * (-1);
+            }
+            var bin = 0;
+            var resto;
+            var i = 1;
+
+            while (k != 0) {
+                resto = k % 2;
+                k = Math.floor(k / 2);
+                bin = bin + resto * i;
+                i = i * 10;
+
+            }
+
+            if (b >= 0) {
+                alert(bin);
+            } else {
+                alert("1" + bin);
+            }
+
+        }
+        function operacao04(num) {
+
+            function primo(n) {
+                var k = n;
+                for (var i = 2; i < k; i++)
+                    if (k % i === 0) {
+                        return false;
+                    }
+                return num > 1;
+            }
+
+            function rotacaoDaVez(n) {
+                var r;;
+                r = n.substring(1) + n[0];
+                return r;
+            }
+
+            function rotacao(string) {
+                for (var i = 0; i < string.length; i++) {
+                    var rotacao;
+                    rotacao = rotacaoDaVez(string);
+                    if (primo(rotacao) == false) {
+                        return false;;
+                    }
+                    string = rotacao;
+                }
+                return true;
+            }
+
+            function leitor(n) {
+                var soma = 0;
+                for (var i = 2; i <= n; i++) {
+                    var a = i.toString();
+                    var b = a.length;
+                    if (primo(i) == true) {
+                        if (b == 1) {
+                            soma++
+                        } else {
+                            if (rotacao(a) == true) {
+                                soma++
+                            }
+                        }
+                    }
+                }
+                return soma;
+            }
+            return leitor(num);
+        }
+
+        while (true) {
+            var op = parseInt(prompt('Digite 1, 2, 3 ou 4'));
+            if (op == 1) {
+                var x = parseInt(prompt("Digite x: "));
+                var y = parseInt(prompt("Digite y: "));
+                var a = operacao01(x, y);
+                alert(a);
+            } else if (op == 2) {
+                var n = parseInt(prompt('digite o numero'));
+                var nDedigitos = parseInt(prompt('digite o numero de digitos '));
+                var nOriginal = n;
+                operacao02(n);
+            } else if (op == 3) {
+                var b = parseInt(prompt('Digite o numero que deseja converter para binario '));
+                operacao03(b);
+            } else if (op == 4) {
+                var n = parseInt(prompt("Digite um numero qualquer"));
+                var d = operacao04(n);
+                alert(d);
+            }
+            break;
+        }
+    </script>
+</body>
+
+</html>
